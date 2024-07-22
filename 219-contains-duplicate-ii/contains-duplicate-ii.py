@@ -1,11 +1,10 @@
 class Solution(object):
     def containsNearbyDuplicate(self, nums, k):
         result = {}
-        for i in range(len(nums)):
-            if (nums[i] in result):
-                j = result[nums[i]]
-                if(abs(i - j) <=k):
+        for i, num in enumerate(nums):
+            if num in result:
+                if abs(result[num]-i) <= k:
                     return True
-            result[nums[i]] = i
+            result[num] = i
         return False
         
