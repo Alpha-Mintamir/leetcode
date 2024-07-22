@@ -5,6 +5,6 @@ class Solution(object):
             if num in result:
                 return True
             else:
-                result[num] = num
+                result[num] = 1
         return False
         
