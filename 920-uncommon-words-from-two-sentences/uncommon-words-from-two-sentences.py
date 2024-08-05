@@ -1,6 +1,6 @@
 class Solution(object):
     def uncommonFromSentences(self, s1, s2):
-        result = set()  # Use a set to avoid duplicates
+        result = set()  
         s1 = s1.split()
         s2 = s2.split()
         
