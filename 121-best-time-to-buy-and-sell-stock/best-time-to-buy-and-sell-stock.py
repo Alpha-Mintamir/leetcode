@@ -1,16 +1,13 @@
-class Solution(object):
-    def maxProfit(self, prices):
-        if not prices or len(prices) < 2:
-            return 0
-
-        minimum = prices[0]
-        maximum_profit = 0
-
-        for price in prices[1:]:
-            if price < minimum:
-                minimum = price
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        left, right = 0, 1
+        maxProfit = 0
+        while right < len(prices):
+            if prices[left] < prices[right]:
+                profit = prices[right] - prices[left]
+                maxProfit = max(maxProfit, profit)
             else:
-                current_profit = price - minimum
-                maximum_profit = max(maximum_profit, current_profit)
+                left = right
+            right += 1
+        return maxProfit
 
-        return maximum_profit
