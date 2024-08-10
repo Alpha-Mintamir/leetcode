@@ -1,13 +1,10 @@
-class Solution(object):
-    def majorityElement(self, nums):
-        majority_num = len(nums) / 2
+class Solution:
+    def majorityElement(self, nums: List[int]) -> int:
         dictt = {}
-
-        for i in nums:
-            if i in dictt:
-                dictt[i] += 1
-            else:
-                dictt[i] = 1
-        for key, value in dictt.items():
-            if value > majority_num:
-                return key
+        for num in nums:
+            dictt[num] = dictt.get(num, 0)+1
+        for i, j in dictt.items():
+            if j > len(nums)/2:
+                return i
+        
+        
