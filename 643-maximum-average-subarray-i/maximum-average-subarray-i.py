@@ -1,15 +1,12 @@
-class Solution(object):
-    def findMaxAverage(self, nums, k):
-        n = len(nums)
-        if k > n:
-            print("invalid")
-            return -1
+class Solution:
+    def findMaxAverage(self, nums: List[int], k: int) -> float:
+        curr_sum = sum(nums[:k])
+        max_sum = curr_sum
 
-        win_sum = sum(nums[:k])
-        max_sum = win_sum / float(k)
+        for i in range(k, len(nums)):
+            curr_sum = curr_sum - nums[i-k] + nums[i]
+            max_sum = max(curr_sum, max_sum)
+        return max_sum/k
 
-        for i in range(1, n - k + 1):  
-            win_sum = win_sum - nums[i - 1] + nums[i + k - 1]
-            max_sum = max(max_sum, win_sum / float(k))
-
-        return max_sum
+        
+        
