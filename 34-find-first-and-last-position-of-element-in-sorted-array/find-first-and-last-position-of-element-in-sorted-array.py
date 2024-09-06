@@ -1,35 +1,34 @@
-class Solution(object):
-    def searchRange(self, nums, target):
-        def indexFromTheLeft(nums, target):
+class Solution:
+    def searchRange(self, nums: List[int], target: int) -> List[int]:
+        def fromLeft(nums, target):
+            found = -1
             left, right = 0, len(nums)-1
-            index = -1
-            while(left <= right):
+            while left<=right:
                 mid = (left + right)//2
-                if(nums[mid]== target):
-                    index = mid
-                    right = mid -1
-
-                elif(nums[mid]<target):
-                    left = mid + 1
-                elif(nums[mid]>target):
-                    right = mid - 1
-            return index
-        def indexFromTheRight(nums, target):
-            left, right = 0, len(nums) - 1
-            index = -1
-            while left <= right:
-                mid = (left + right) // 2
                 if nums[mid] == target:
-                    index = mid
-                    left = mid + 1
-                elif nums[mid] < target:
-                    left = mid + 1
+                    found = mid
+                    right = mid-1
+                elif nums[mid]< target:
+                    left = mid+1
                 else:
-                    right = mid - 1
-            return index
+                    right = mid-1
+            return found
+        def fromRight(nums, target):
+            found = -1
+            left, right = 0, len(nums)-1
+            while left<=right:
+                mid = (left + right)//2
+                if nums[mid] == target:
+                    found = mid
+                    left = mid+1
+                elif nums[mid]< target:
+                    left = mid+1
+                else:
+                    right = mid-1
+            return found
+        return([fromLeft(nums, target),fromRight(nums, target)] )            
 
-        result = [indexFromTheLeft(nums, target), indexFromTheRight(nums, target)]
-        return result
-    
-        
+            
+            
+
         
