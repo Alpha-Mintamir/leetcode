@@ -1,32 +1,34 @@
 class Solution:
     def searchRange(self, nums: List[int], target: int) -> List[int]:
-        def fromLeft(nums, target):
+        def fromLeft():
+            L, R = 0, len(nums)-1
             found = -1
-            left, right = 0, len(nums)-1
-            while left<=right:
-                mid = (left + right)//2
-                if nums[mid] == target:
+            while(L<=R):
+                mid = (L+R)//2
+                if target == nums[mid]:
                     found = mid
-                    right = mid-1
-                elif nums[mid]< target:
-                    left = mid+1
+                    R = mid-1
+                elif(target>nums[mid]):
+                    L = mid+1
                 else:
-                    right = mid-1
+                    R = mid-1
             return found
-        def fromRight(nums, target):
+        def fromRight():
+            L, R = 0, len(nums)-1
             found = -1
-            left, right = 0, len(nums)-1
-            while left<=right:
-                mid = (left + right)//2
-                if nums[mid] == target:
+            while(L<=R):
+                mid = (L+R)//2
+                if target == nums[mid]:
                     found = mid
-                    left = mid+1
-                elif nums[mid]< target:
-                    left = mid+1
+                    L = mid+1
+                elif(target>nums[mid]):
+                    L = mid+1
                 else:
-                    right = mid-1
+                    R = mid-1
             return found
-        return([fromLeft(nums, target),fromRight(nums, target)] )            
+
+        return([fromLeft(),fromRight() ])
+
 
             
             
