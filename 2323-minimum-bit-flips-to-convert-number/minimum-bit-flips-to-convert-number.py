@@ -10,10 +10,8 @@ class Solution:
         if ndiff != 0:
             for i in range(ndiff):
                 zeros.append(0)
-        start = [str(i)for i in start]
-        start = [int(i)for i in start]
-        goal = [str(i)for i in goal]
-        goal = [int(i)for i in goal]
+        start = list(map(int, str(start)))
+        goal = list(map(int, str(goal)))
         if nstart>ngoal:
             goal = zeros + goal
         elif nstart<ngoal:
