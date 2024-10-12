@@ -1,13 +1,13 @@
-class Solution(object):
-    def findDuplicates(self, nums):
-        hashmap = {}
+class Solution:
+    def findDuplicates(self, nums: list[int]) -> list[int]:
         result = []
-
-        for num in nums:
-            if num in hashmap:
-                result.append(num)
-            hashmap[num] = 1
-        return result
-
-                
         
+        for i in range(len(nums)):
+            index = abs(nums[i]) - 1
+            
+            if nums[index] < 0:
+                result.append(abs(nums[i]))  
+            else:
+                nums[index] = -nums[index]
+        
+        return result
