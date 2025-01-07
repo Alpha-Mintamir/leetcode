@@ -1,15 +1,8 @@
-class Solution:
-    def stringMatching(self, words: List[str]) -> List[str]:
-        result = []
-        length = len(words)
-        for word in range(length):
-            for i in range(length):
-                if i == word:
-                    continue
-                if words[word] in words[i]:
-                    result.append(words[word])
-                    break
-        return result
-
-
+class Solution(object):
+    def stringMatching(self, words):
+        arr = ' '.join(words)
+        subStr = [i for i in words if arr.count(i) >= 2]
+        
+        return subStr
+        
         
