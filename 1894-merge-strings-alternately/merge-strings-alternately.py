@@ -1,5 +1,5 @@
-class Solution(object):
-    def mergeAlternately(self, word1, word2):
+class Solution:
+    def mergeAlternately(self, word1: str, word2: str) -> str:
         result = []
         for i,j in zip(word1, word2):
             result.append(i)
@@ -9,6 +9,5 @@ class Solution(object):
         else:
             result.append(word2[len(word1):])
         return ''.join(result)
-
 
         
